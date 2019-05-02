@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataLogic
+{
+    class SQL_CREATE_SCRIP
+    {
+/*
+-- CREATE SCRIPT --
+
+-- 1. Client --
+CREATE TABLE Client(
+IdClient INT IDENTITY(1,1) PRIMARY KEY,
+Title NVARCHAR(15) NOT NULL,
+FirstName NVARCHAR(25) NOT NULL,
+MiddleName NVARCHAR(25) NOT NULL DEFAULT '',
+LastName NVARCHAR(25) NOT NULL,
+BirtDate DATE NOT NULL,
+PersonalIdCard NVARCHAR(8) NOT NULL,
+StreetAddress NVARCHAR(50) NOT NULL,
+PostCode  NVARCHAR(5) NOT NULL,
+City NVARCHAR(50) NOT NULL,
+Country NVARCHAR(50) NOT NULL,
+Phone NVARCHAR(12) NOT NULL,
+Email NVARCHAR(100) NOT NULL,
+Active BIT NOT NULL DEFAULT 1
+);
+*/
+
+/*
+-- 2. Account --
+CREATE TABLE Account (
+IdAccount INT IDENTITY(1,1) PRIMARY KEY,
+IdClient INT FOREIGN KEY REFERENCES Client(IdClient) NOT NULL ,
+Iban NVARCHAR(24) NOT NULL,
+AccName NVARCHAR(100) NOT NULL,
+Amount DECIMAL(20,2) NOT NULL DEFAULT 0,
+OverDraft DECIMAL(20,2) NOT NULL DEFAULT 0,
+Active BIT NOT NULL DEFAULT 1
+);
+*/
+
+/*
+-- 3. Cards --
+CREATE TABLE Cards (
+IdCard INT IDENTITY(1,1) PRIMARY KEY,
+ExpirationDate DATE NOT NULL,
+IdAccount INT FOREIGN KEY REFERENCES Account(IdAccount) NOT NULL ,
+CardNumber NVARCHAR(16) NOT NULL,
+Pin NVARCHAR(4) NOT NULL DEFAULT '1111',
+Blocked BIT NOT NULL DEFAULT 0,
+Active BIT NOT NULL DEFAULT 1
+);
+*/
+/*
+-- 4. Transactions --
+CREATE TABLE Transactions (
+IdTransaction INT IDENTITY(1,1) PRIMARY KEY,
+IdFrom INT FOREIGN KEY REFERENCES Account(IdAccount) NOT NULL ,
+IdTo INT FOREIGN KEY REFERENCES Account(IdAccount) NOT NULL ,
+Amount DECIMAL(20,2) NOT NULL,
+VS NVARCHAR(20) NOT NULL,
+SS NVARCHAR(20) NOT NULL,
+KS NVARCHAR(20) NOT NULL,
+TexMessage NVARCHAR(100) NOT NULL,
+);
+*/
+    }
+}
